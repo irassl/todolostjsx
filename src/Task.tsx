@@ -1,16 +1,17 @@
 import React from 'react';
-
 type TaskType = {
-	id: number
+	id: string
 	title: string
 	isDone: boolean
+	removeTask: (taskId: string) => void
 }
 
 const Task = (props: TaskType) => {
 	return (
-		<li>
+		<li >
 			<input type="checkbox" checked={props.isDone} />
-			<span>{props.title}</span>
+			<span className={props.isDone ? "complited-task" : ""}>{props.title}</span>
+			<button onClick={() => props.removeTask(props.id)}> X </button>
 		</li>
 	)
 
